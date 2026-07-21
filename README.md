@@ -1,9 +1,9 @@
-# 🚀 My First AI App
+# 🚀 My First AI App 
 
 > My journey from zero to a deployed AI application.
 > Built during the **Build Your First AI App** bootcamp with [cloudwithshad](https://ai-with-python-for-all.netlify.app/).
 
-**👤 Name:** _(your name here)_
+**👤 Name:** Shadrack Darku
 **📅 Cohort:** July 2026
 **🔗 My live app:** _(paste your .streamlit.app link here when you deploy in Week 5!)_
 
