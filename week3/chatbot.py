@@ -1,34 +1,15 @@
-"""
-Week 3 · Lab 3.1 — A Chatbot That Remembers  ⭐ THE FLAGSHIP
-===========================================================
-The big idea: "memory" is just a growing list of messages
-that you re-send to the AI every single turn.
-
-Run it with:   streamlit run week3/chatbot.py
-"""
-
+"""Meeting 4 student starter. See docs/LABS.md. This is intentionally unfinished."""
 import streamlit as st
-from openai import OpenAI
-
-client = OpenAI()
-
-st.title("🤖 My Chatbot")
-
-# ── 1. THE MEMORY BOX ────────────────────────────────────
-# TODO: create st.session_state.messages ONCE (use the "if not in" guard)
-#       Seed it with a system message to give your bot a persona.
-
-
-# ── 2. REPLAY THE HISTORY ────────────────────────────────
-# TODO: loop over st.session_state.messages and show each one
-#       as a chat bubble. (Skip the "system" message!)
-
-
-# ── 3. CAPTURE NEW INPUT ─────────────────────────────────
-# TODO: prompt = st.chat_input(...)
-#       If there's a prompt: save it, show it.
-
-
-# ── 4. GET THE AI REPLY (with full context!) ─────────────
-# TODO: send st.session_state.messages (the WHOLE list) to the AI,
-#       show the answer, then save it back to the list.
+from coursekit.ui import configuration, request
+st.set_page_config(page_title='Study Buddy')
+st.title('Study Buddy')
+config = configuration()
+st.info("Student starter: implement the checklist below during the guided lab.")
+# TODO 1: Initialise messages once with an if-not-in guard.
+st.write('1. Initialise messages once with an if-not-in guard.')
+# TODO 2: Replay saved user/assistant messages as chat bubbles.
+st.write('2. Replay saved user/assistant messages as chat bubbles.')
+# TODO 3: Capture a question and call request() with the latest history.
+st.write('3. Capture a question and call request() with the latest history.')
+# TODO 4: Save successful turns and add a New conversation button.
+st.write('4. Save successful turns and add a New conversation button.')

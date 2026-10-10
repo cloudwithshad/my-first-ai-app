@@ -1,7 +1,7 @@
 # ══════════════════════════════════════════════════════════
 #  🔐 SECRETS — NEVER COMMIT THESE
 #  If your API key ends up on GitHub, anyone can spend your
-#  money. These lines stop that from happening. Do not delete.
+#  money. These patterns exclude matching untracked files; they cannot protect keys pasted into source code.
 # ══════════════════════════════════════════════════════════
 .env
 .env.*
@@ -55,3 +55,9 @@ Thumbs.db
 # ══════════════════════════════════════════════════════════
 data/private/
 *_private.csv
+
+# Build/test outputs and exported student archive
+.pytest_cache/
+.coverage
+htmlcov/
+exports/

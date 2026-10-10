@@ -1,30 +1,17 @@
-"""
-Week 2 · Lab 2.1 — Market Assistant (CLI)
-=========================================
-Your code thinks for the first time. 🧠
-
-Before running, make sure your API key is set as an environment variable:
-    OPENAI_API_KEY
-
-Run it with:   python week2/assistant.py
-"""
-
-from openai import OpenAI
-
-client = OpenAI()   # automatically finds your OPENAI_API_KEY
-
-# TODO: create a dictionary of your prices (your "price board")
-prices = {}
+"""Meeting 2 starter. python week2/assistant.py. See docs/LABS.md."""
+from coursekit.ai import reply, AIError
+from coursekit.market import quote, receipt
 
 
 def ask_assistant(question):
-    """Send a question to the AI and return its answer."""
-    # TODO: build your system prompt using the prices
-    # TODO: call client.chat.completions.create(...)
-    # TODO: return the reply text
-    pass
+    # TODO: reject blank input; build a list with one user message.
+    # TODO: call reply(messages, instructions), then return its text.
+    # Demo mode is the default: it does not call AI.
+    raise NotImplementedError('Complete ask_assistant in Meeting 2.')
 
 
-if __name__ == "__main__":
-    # TODO: ask the assistant a question and print the answer
-    pass
+if __name__ == '__main__':
+    try:
+        print(ask_assistant(input('Your question: ')))
+    except (NotImplementedError, AIError) as exc:
+        print(exc)

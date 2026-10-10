@@ -1,29 +1,15 @@
-"""
-Week 3 · Lab 3.2 — Give It a Personality
-========================================
-90% of a bot's personality lives in its SYSTEM PROMPT.
-Here you build a live control panel for it.
-
-Run it with:   streamlit run week3/persona_bot.py
-"""
-
+"""Meeting 5 student starter. See docs/LABS.md. This is intentionally unfinished."""
 import streamlit as st
-from openai import OpenAI
-
-client = OpenAI()
-
-# TODO: build a PERSONAS dictionary — name -> system prompt
-PERSONAS = {
-    # "Efua the Study Buddy": "You are Efua, a warm Ghanaian tutor...",
-}
-
-# ── THE CONTROL PANEL ────────────────────────────────────
-with st.sidebar:
-    st.header("🎛️ Control Panel")
-    # TODO: selectbox to pick a persona
-    # TODO: radio for tone (Friendly / Professional / Funny)
-    # TODO: slider for creativity (temperature, 0.0 to 1.0)
-
-# TODO: build the system_prompt from the choices above
-# TODO: build conversation = [system message] + st.session_state.messages
-# TODO: the chat loop (same as chatbot.py), but pass temperature too
+from coursekit.ui import configuration, request
+st.set_page_config(page_title='Persona Studio')
+st.title('Persona Studio')
+config = configuration()
+st.info("Student starter: implement the checklist below during the guided lab.")
+# TODO 1: Create persona and tone controls.
+st.write('1. Create persona and tone controls.')
+# TODO 2: Build instructions from those choices.
+st.write('2. Build instructions from those choices.')
+# TODO 3: Start a new conversation when controls change.
+st.write('3. Start a new conversation when controls change.')
+# TODO 4: Reuse the chat loop and keep only five exchanges.
+st.write('4. Reuse the chat loop and keep only five exchanges.')

@@ -1,21 +1,15 @@
-"""
-Week 2 · Lab 2.2 — My First AI Web App (Streamlit)
-==================================================
-Same brain as assistant.py — now with a real face. 🎈
-
-Run it with:   streamlit run week2/app.py
-(NOT "python week2/app.py" — Streamlit has its own command!)
-"""
-
+"""Meeting 3 student starter. See docs/LABS.md. This is intentionally unfinished."""
 import streamlit as st
-from openai import OpenAI
-
-client = OpenAI()
-
-# TODO: st.set_page_config(...) — give it a title and an icon
-
-# TODO: st.title(...)
-
-# TODO: add a text_input for the user's question
-
-# TODO: add a button — when clicked, call the AI and show the answer
+from coursekit.ui import configuration, request
+st.set_page_config(page_title='Market Assistant')
+st.title('Market Assistant')
+config = configuration()
+st.info("Student starter: implement the checklist below during the guided lab.")
+# TODO 1: Create a form with product, quantity and question inputs.
+st.write('1. Create a form with product, quantity and question inputs.')
+# TODO 2: Use quote() and display receipt().
+st.write('2. Use quote() and display receipt().')
+# TODO 3: Call request() only after submission and non-empty question.
+st.write('3. Call request() only after submission and non-empty question.')
+# TODO 4: Save the result in session state.
+st.write('4. Save the result in session state.')

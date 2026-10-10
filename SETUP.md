@@ -1,107 +1,137 @@
-# 🏁 START HERE — Get Your Repo Ready
+# Set up once; understand every step
 
-**Do this once, at the very start of the bootcamp.** It takes about 10 minutes.
-By the end, you'll have your own copy of this project on YOUR GitHub, ready to fill in week by week.
+Use **Python 3.12**, Git and VS Code. This release is tested on Python 3.12; use that version for a consistent cohort environment.
 
----
+## 1. Your own repository
 
-## Step 1 · Make your own copy (click "Use this template")
-
-1. Go to the starter repo: **`https://github.com/cloudwithshad/my-first-ai-app`**
-2. Click the green **`Use this template`** button → **`Create a new repository`**
-3. Name it **`my-first-ai-app`**
-4. Make sure it's set to **Public** ✅
-   _(Public = employers can see your work. That's the whole point!)_
-5. Click **Create repository**
-
-> 🎉 You now have your own copy at `github.com/YOUR-USERNAME/my-first-ai-app`
-
-**⚠️ Don't just download the ZIP.** Use the template button — it makes the repo *yours*, with your own commit history.
-
----
-
-## Step 2 · Get it onto your computer
-
-Open your terminal (Git Bash on Windows) and run — **replace `YOUR-USERNAME`**:
+On the course GitHub page use **Use this template** if available. If it is not shown, use **Fork**. Name your copy `my-first-ai-app`. Clone **your copy**, not the instructor's repository:
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/my-first-ai-app.git
 cd my-first-ai-app
+code .
 ```
 
-You should now see the folders: `week1`, `week2`, `week3`, `week4`, `week5`, `capstone`.
+Replace YOUR-USERNAME. If you received a ZIP, extract it and open the folder containing README.md in VS Code. See docs/APPLY_UPDATE.md for applying this package to an existing repository without losing its Git history.
 
----
+## 2. Create an isolated Python environment
 
-## Step 3 · Install the libraries
+An environment gives this project its own installed libraries. Run these commands in the VS Code terminal, from the repo root.
 
-```bash
-pip install -r requirements.txt
-```
+Windows PowerShell:
 
----
-
-## Step 4 · Set your OpenAI key (Week 2 onwards)
-
-Your key is a **password**. It goes in an environment variable — **never** in your code.
-
-**Mac / Linux / Git Bash:**
-```bash
-export OPENAI_API_KEY="sk-your-key-here"
-```
-
-**Windows PowerShell:**
 ```powershell
-$env:OPENAI_API_KEY="sk-your-key-here"
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 ```
 
-Check it worked:
-```bash
-echo $OPENAI_API_KEY
+If activation is blocked by your computer's policy, do not change the policy just for this lesson. Use the interpreter directly:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run week2/app.py
 ```
 
-> 🔐 **The `.gitignore` in this repo protects you** — it stops `.env` and secrets files from ever being committed. Don't delete it.
->
-> **If you ever accidentally push your key: delete it immediately** at platform.openai.com and make a new one. Tell your mentor. It happens — just act fast.
-
----
-
-## Step 5 · Make your first commit ✅
-
-Prove everything works. Open `README.md`, add your name at the top, then:
+Windows Git Bash (after creating `.venv`):
 
 ```bash
-git add .
-git commit -m "Add my name — starting the bootcamp!"
+source .venv/Scripts/activate
+python -m pip install -r requirements.txt
+```
+
+macOS/Linux:
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+In VS Code choose **Python: Select Interpreter** and select the interpreter inside `.venv`. `-e .` in requirements installs this repository's `coursekit` helpers so imports work from different lab folders. Re-run installation when you move the repository to a new location.
+
+Check the actual interpreter and packages:
+
+```bash
+python --version
+python -c "import sys; print(sys.executable)"
+python -c "import streamlit, openai, pandas, coursekit; print('Imports OK')"
+```
+
+## 3. Run without a key first
+
+```bash
+python week2/market_basics.py
+python -m streamlit run week2/app.py
+```
+
+The first starter asks you to finish a function. The second opens a checklist in your browser. That is intentional, not a failed installation. In the instructor copy, use `instructor/week2/market_basics.py` or `instructor/week2/app.py` to see finished versions.
+
+`python file.py` runs a script. `python -m streamlit run file.py` starts a web app server. Keep the terminal running; Ctrl+C stops it.
+
+## 4. Enable real AI deliberately
+
+The mentor chooses a currently accessible, text-capable **Responses API** model and verifies its cost and account access before class. No model ID is silently selected. The app uses a 600-token output limit; some reasoning models may need a different setting. Review this with the mentor, not by removing all limits.
+
+For web apps, copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` using VS Code. Edit the private file:
+
+```toml
+APP_MODE = "openai"
+OPENAI_API_KEY = "YOUR_PRIVATE_KEY"
+OPENAI_MODEL = "YOUR_INSTRUCTOR_APPROVED_MODEL_ID"
+```
+
+Restart the app. Do not paste the real values into source code, chat, screenshots or commits.
+
+For terminal scripts, set environment variables in the same terminal. These are placeholders:
+
+PowerShell:
+
+```powershell
+$env:APP_MODE="openai"
+$env:OPENAI_API_KEY="YOUR_PRIVATE_KEY"
+$env:OPENAI_MODEL="YOUR_INSTRUCTOR_APPROVED_MODEL_ID"
+```
+
+macOS/Linux/Git Bash:
+
+```bash
+export APP_MODE="openai"
+export OPENAI_API_KEY="YOUR_PRIVATE_KEY"
+export OPENAI_MODEL="YOUR_INSTRUCTOR_APPROVED_MODEL_ID"
+```
+
+Check only whether configuration exists, never print the key:
+
+```bash
+python -c "import os; print('Key configured:', bool(os.getenv('OPENAI_API_KEY'))); print('Model configured:', bool(os.getenv('OPENAI_MODEL')))"
+```
+
+Terminal scripts read environment variables, **not** Streamlit secrets. Web apps prefer Streamlit secrets, then environment variables. `.env` files are ignored by Git but are **not automatically loaded** by this application. Demo mode is selected when APP_MODE is absent or set to `demo`.
+
+## 5. Save a meaningful checkpoint
+
+```bash
+git status
+git diff
+git add README.md
+git commit -m "Personalise my learning repository"
 git push
 ```
 
-Refresh your GitHub page. **Your name is live on the internet.** That's your first push. 🎉
+Review file names and changes before staging. `.gitignore` excludes matching untracked files; it does not remove files already tracked and cannot protect a key pasted into `.py` code. If a key is exposed, revoke it at the provider, create a replacement and tell the mentor. Removing a line alone does not erase Git history.
 
----
+## Troubleshooting
 
-## 🔁 Your weekly rhythm
+| Symptom | Check |
+|---|---|
+| Python not found | Confirm Python 3.12 installation; reopen the terminal. On Windows try `py -3.12`. |
+| `No module named coursekit` | Run the requirements install from the repo root using the same interpreter you use to launch. |
+| Streamlit cannot find the file | Use the repo root as your working directory; check spelling. |
+| Starter shows TODOs | Expected. Implement the lab, or launch the instructor reference. |
+| Demo message instead of AI | Demo is intentional. Configure both key/model and APP_MODE for live mode. |
+| Key works in CLI but not web | Check whether a local secrets file overrides environment values. |
+| Authentication/model error | Check key and model access privately; never paste credentials into an issue. |
+| Git push asks for login | Use your supported GitHub sign-in/credential flow; do not use your account password as a Git token. |
 
-After every lab, run these three commands:
-
-```bash
-git add .
-git commit -m "Complete Lab 2.1 — Market Assistant"
-git push
-```
-
-Then **tick the box** in `README.md` for that lab.
-
-> 💡 **Commit often.** Every push is a save point, and your commit history becomes proof of your journey. Employers genuinely look at this.
-
----
-
-## 🆘 Stuck?
-
-- **`git: command not found`** → Install Git (see the setup guide on the course dashboard)
-- **Asked for a password when pushing?** → GitHub needs a *Personal Access Token*, not your password. Ask in the group — we'll walk you through it.
-- **Anything else** → Bring it to the WhatsApp group or a live session. **Never stay stuck alone.**
-
----
-
-_🇬🇭 Let's build._
+[Official Python venv guidance](https://docs.python.org/3/library/venv.html)
