@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 # Python for Everybody with AI - Level 1
+=======
+# 🚀 My First AI App 
+>>>>>>> 5343a610a4da2c6f3e3ed8c28bc365c2ad04742a
 
 **CloudWithShad | Get Skills Network | Shadrack Darku**
 
+<<<<<<< HEAD
 From Python notebooks to a working, deployed AI application.
+=======
+**👤 Name:** Shadrack Darku
+**📅 Cohort:** July 2026
+**🔗 My live app:** _(paste your .streamlit.app link here when you deploy in Week 5!)_
+>>>>>>> 5343a610a4da2c6f3e3ed8c28bc365c2ad04742a
 
 **Student:** add your name. **Cohort:** add your cohort. **Live app:** add your URL.
 
